@@ -16,7 +16,7 @@
     "build:main": "node build/build.js",
     "clean": "rimraf ./lib",
     "lint": "eslint --ext js,jsx,ts,tsx,vue .",
-    "release": "standard-version && git push --follow-tags origin master",
+    "release": "npm run build && standard-version && git push --follow-tags origin master",
     "test": "jest",
     "test:unit": "jest --updateSnapshot",
     "test:unit:coverage": "jest --coverage",
