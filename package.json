@@ -1,0 +1,80 @@
+{
+  "name": "property-manager-decorator",
+  "version": "0.1.0",
+  "description": "ES201X/TypeScript class decorator for property-manager",
+  "main": "dist/property-manager-decorator.common.js",
+  "module": "dist/property-manager-decorator.esm.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:main",
+    "build:ts": "tsc -b tsconfig.build.json",
+    "build:main": "node build/build.js",
+    "clean": "rimraf ./lib",
+    "lint": "eslint --ext js,jsx,ts,tsx,vue .",
+    "release": "standard-version && git push --follow-tags origin master && npm publish",
+    "test": "jest",
+    "test:unit": "jest --updateSnapshot",
+    "test:unit:coverage": "jest --coverage",
+    "test:unit:watch": "jest --watch",
+    "test:unit:watchAll": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowyu/property-manager-decorator.ts.git"
+  },
+  "keywords": [
+    "property-manager",
+    "decorator",
+    "class",
+    "babel",
+    "typescript"
+  ],
+  "author": "Riceball LEE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snowyu/property-manager-decorator.ts/issues"
+  },
+  "homepage": "https://github.com/snowyu/property-manager-decorator.ts#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-syntax-jsx": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@types/jest": "^24.9.0",
+    "@types/lodash": "^4.14.149",
+    "@types/memoizee": "^0.4.3",
+    "@types/node": "^13.1.7",
+    "@typescript-eslint/parser": "^2.16.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "jest": "^24.9.0",
+    "jest-extended": "^0.11.2",
+    "lodash": "^4.17.15",
+    "memoizee": "*",
+    "property-manager": "^1.2.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-replace": "^2.2.0",
+    "standard-version": "^7.0.1",
+    "ts-jest": "^24.3.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "uglify-es": "^3.3.9",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "peerDependencies": {
+    "lodash": ">=2",
+    "memoizee": "*",
+    "property-manager": ">=1"
+  }
+}

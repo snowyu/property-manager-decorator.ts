@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig",
+  "exclude": [
+    "test.ts",
+    "**/*.back",
+    "**/*.disable",
+    "**/*.disable.ts",
+    "**/*.bak.ts",
+    "**/*.bakup.ts",
+    "**/*.spec.ts"
+  ]
+}
