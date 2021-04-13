@@ -3,9 +3,10 @@ const path = require('path')
 const zlib = require('zlib')
 const uglify = require('uglify-es')
 const rollup = require('rollup')
-const replace = require('rollup-plugin-replace')
-const babel = require('rollup-plugin-babel')
-const version = process.env.VERSION || require('../package.json').version
+const replace = require('@rollup/plugin-replace')
+const {babel} = require('@rollup/plugin-babel')
+const pkg = require('../package.json')
+const version = process.env.VERSION || pkg.version
 const banner =
 `/**
   * property-manager-decorator v${version}
@@ -18,8 +19,12 @@ if (!fs.existsSync('dist')) {
 }
 
 const resolve = _path => path.resolve(__dirname, '../', _path)
+const babelCommonConfig = {
+  babelHelpers: 'bundled'
+}
 
 const babelConfigForModern = {
+  ...babelCommonConfig,
   presets: [
     [
       '@babel/env',
@@ -34,6 +39,7 @@ const babelConfigForModern = {
 }
 
 const babelConfigForLegacy = {
+  ...babelCommonConfig,
   presets: [
     [
       '@babel/env',
@@ -81,7 +87,8 @@ function genConfig (opts) {
   const config = {
     input: {
       input: resolve('lib/index.js'),
-      external: ['property-manager', 'lodash', 'memoizee'],
+      external: [].concat(Object.keys(pkg.dependencies || {})).concat(Object.keys(pkg.peerDependencies || {})),
+      // external: ['property-manager/lib/ability', 'lodash', 'memoizee'],
       plugins: [
         babel(
           opts.format === 'esm' && typeof opts.env === 'string'
@@ -103,6 +110,7 @@ function genConfig (opts) {
 
   if (opts.env) {
     config.input.plugins.unshift(replace({
+      preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify(opts.env)
     }))
   }
