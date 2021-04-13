@@ -76,6 +76,10 @@ describe('PropertyManager Decorator', () => {
     expect(result.b).toEqual(true);
     expect(result.chi).toEqual('123');
     expect(result.toJSON()).toMatchObject({ as: 'Hi world' });
+    result.as = 'try'
+    result.chi = '432'
+    expect(result.id).toEqual('try#432-1eu3');
+    expect(result.toJSON()).toMatchObject({ as: 'try', chi: '432' });
   });
 
   it('should get array property', async () => {

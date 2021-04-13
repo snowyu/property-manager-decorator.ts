@@ -1,4 +1,4 @@
-## Property Manager Decorator
+# Property Manager Decorator
 
 > ECMAScript / TypeScript decorator for class-style Property Manager components.
 
@@ -30,10 +30,9 @@ The rules of the properties:
 * The readonly(`writable` is false) attributes can not be assigned.
 * The assignment order of properties is the order of defined properties.
 
-
 **NOTE: ONLY FOR**  `NormalPropertyManager` and `AdvancePropertyManager`
 
-### Usage
+## Usage
 
 **Required**: [ECMAScript stage 1 decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md).
 If you use Babel, [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) is needed.
@@ -41,7 +40,7 @@ If you use TypeScript, enable `--experimentalDecorators` flag.
 
 > It does not support the stage 2 decorators yet since mainstream transpilers still transpile to the old decorators.
 
-### Example
+## Example
 
 Following is the example written in typescript.
 
@@ -53,8 +52,8 @@ import { uuid, randomInt } from './utils';
 
 @PropertyManager
 class DemoItem extends AdvancePropertyManager {
-  @Property('init') value!: string;
-  @Property('home') kind!: string;
+  @Prop('init') value: string= 'init';
+  @Prop('home') kind: string= 'home';
   constructor(options?) {
     super(options);
   }
@@ -62,9 +61,11 @@ class DemoItem extends AdvancePropertyManager {
 
 @PropertyManager
 class Demo extends AdvancePropertyManager {
+  // the default value is true
   @Prop({default: true}) enabled: boolean = true;
-  // the value is the default value
+  // the value is the default value too.
   @Prop({value: true}) enabled: boolean = true;
+  // the `true` is the default value.
   @Prop(true) enabled: boolean = true;
   @Prop({required: true}) author!: string;
   @Prop({template: '${author}-${uuid}', imports: {uuid, randomInt}}) id!: string;
