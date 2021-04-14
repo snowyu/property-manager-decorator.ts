@@ -34,9 +34,10 @@ The rules of the properties:
 
 ## Usage
 
-**Required**: [ECMAScript stage 1 decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md).
-If you use Babel, [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) is needed.
-If you use TypeScript, enable `--experimentalDecorators` flag.
+**Required**: [ECMAScript Decorators](https://github.com/tc39/proposal-decorators).
+
+* If you use Babel, [@babel/plugin-proposal-decorators](https://babel.dev/docs/en/babel-plugin-proposal-decorators) is needed.
+* If you use TypeScript, enable `--experimentalDecorators` flag.
 
 > It does not support the stage 2 decorators yet since mainstream transpilers still transpile to the old decorators.
 
