@@ -17,7 +17,6 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "suppressImplicitAnyIndexErrors": true
   },
   "include": [
     "src/**/*.ts"
