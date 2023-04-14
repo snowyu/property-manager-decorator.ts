@@ -38,8 +38,8 @@ module.exports = {
     // '^src/(.*)$': '<rootDir>/src/$1',
   },
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
-    '.*\\.jsx?$': '<rootDir>/node_modules/babel-jest',
+    "^.+\\.[tj]sx?$": "ts-jest",
+    // '.*\\.jsx?$': '<rootDir>/node_modules/babel-jest',
     // "\\.(gql|graphql)$": "jest-transform-graphql",
   },
   transformIgnorePatterns: [
