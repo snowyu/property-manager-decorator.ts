@@ -77,3 +77,58 @@ class Demo extends AdvancePropertyManager {
   }
 }
 ```
+
+THe AoP way:
+
+```ts
+import { PropertyManager, Property as Prop } from 'property-manager-decorator';
+import { AdvancePropertyManager } from 'property-manager';
+import { uuid, randomInt } from './utils';
+
+@PropertyManager
+export class DemoItem {
+  @Prop('init') value: string= 'init';
+  @Prop('home') kind: string= 'home';
+  constructor(options?) {
+    super(options);
+  }
+}
+@PropertyManager
+export class Demo {
+  // the default value is true
+  @Prop({default: true}) enabled: boolean = true;
+  // the value is the default value too.
+  @Prop({value: true}) enabled: boolean = true;
+  // the `true` is the default value.
+  @Prop(true) enabled: boolean = true;
+  @Prop({required: true}) author!: string;
+  @Prop({template: '${author}-${uuid}', imports: {uuid, randomInt}}) id!: string;
+  @Prop({type: arrayOf(DemoItem)}) items!: DemoItem[];
+
+  constructor(options?) {
+    super(options);
+  }
+}
+
+// The TS can not know the added methods,
+// Ugly hardcore patch for AOP injects
+// https://github.com/microsoft/TypeScript/issues/4881
+interface DemoItem extends AdvancePropertyManager {}
+interface Demo extends AdvancePropertyManager {}
+```
+
+
+https://github.com/microsoft/TypeScript/issues/4881
+Ugly hardcore patch for AOP injects:
+Or add the following file (file to be removed once the feature comes out):
+
+```ts
+// MyClass.d.ts
+import { DemoItem } from './DemoItem';
+import { AdvancePropertyManager } from 'property-manager';
+
+declare module './Demo' {
+  export interface DemoItem extends AdvancePropertyManager {}
+  export interface Demo extends AdvancePropertyManager {}
+}
+```
