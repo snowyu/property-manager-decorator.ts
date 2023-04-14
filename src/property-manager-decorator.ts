@@ -1,6 +1,4 @@
-import { IPropDescriptor } from 'property-manager/lib/abstract';
-import { IAbilityOptions } from 'property-manager/lib/ability';
-import propertyManager from 'property-manager/lib/ability';
+import { IAbilityOptions, IPropDescriptor, PropertyAbility } from 'property-manager';
 import { generateTemplateProperty } from './template-property';
 
 type TemplateFunc = (aObj: any) => string;
@@ -33,7 +31,7 @@ export function Property(options?: PropDescriptor | string | number | boolean ):
 }
 
 /**
- * decorator of a class
+ * The Property Manager Decorator of a class
  * Note: NO SUPPORTS for Simple Property-manager yet.
  * @param options the ctor or property-manager options.
  */
@@ -50,7 +48,7 @@ export function PropertyManager(options: Constructor|IAbilityOptions): any {
 function PropertyManagerFactory(ctor: Constructor|any, options?: IAbilityOptions) {
   const vProps = ctor[innerPropsName];
   if (vProps) {
-    if (!ctor.defineProperties) propertyManager(ctor, options);
+    if (!ctor.defineProperties) PropertyAbility(ctor, options);
     const defineProperties = ctor.defineProperties;
     Object.keys(vProps).forEach(k => {
       const v = vProps[k];
