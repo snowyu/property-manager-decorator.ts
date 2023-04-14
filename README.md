@@ -90,7 +90,8 @@ export class DemoItem {
   @Prop('init') value: string= 'init';
   @Prop('home') kind: string= 'home';
   constructor(options?) {
-    super(options);
+    // initialize PropertyManager
+    this.initialize(options);
   }
 }
 @PropertyManager
@@ -106,7 +107,8 @@ export class Demo {
   @Prop({type: arrayOf(DemoItem)}) items!: DemoItem[];
 
   constructor(options?) {
-    super(options);
+    // initialize PropertyManager
+    this.initialize(options);
   }
 }
 
