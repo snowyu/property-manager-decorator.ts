@@ -99,9 +99,9 @@ export class Demo {
   // the default value is true
   @Prop({default: true}) enabled: boolean = true;
   // the value is the default value too.
-  @Prop({value: true}) enabled: boolean = true;
+  // @Prop({value: true}) enabled: boolean = true;
   // the `true` is the default value.
-  @Prop(true) enabled: boolean = true;
+  // @Prop(true) enabled: boolean = true;
   @Prop({required: true}) author!: string;
   @Prop({template: '${author}-${uuid}', imports: {uuid, randomInt}}) id!: string;
   @Prop({type: arrayOf(DemoItem)}) items!: DemoItem[];
@@ -115,8 +115,17 @@ export class Demo {
 // The TS can not know the added methods,
 // Ugly hardcore patch for AOP injects
 // https://github.com/microsoft/TypeScript/issues/4881
-interface DemoItem extends AdvancePropertyManager {}
-interface Demo extends AdvancePropertyManager {}
+interface DemoItem extends AdvancePropertyManager {
+  value: string;
+  kind: string;
+}
+
+interface Demo extends AdvancePropertyManager {
+  enabled: boolean;
+  author?: string;
+  id?: string;
+  item?: DemoItem[]
+}
 ```
 
 
