@@ -33,6 +33,7 @@ export function generateTemplateProperty(
   if (typeof vTemplate !== 'function') return;
 
   if (aOptions.required !== false) aOptions.required = true;
+  if (typeof aOptions.writable !== 'boolean') {aOptions.writable = false}
   const vOpts = {
     ...aOptions,
     type: 'String',

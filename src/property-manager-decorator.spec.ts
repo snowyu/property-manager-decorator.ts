@@ -62,6 +62,8 @@ describe('PropertyManager Decorator', () => {
     expect(result.b).toEqual(true);
     expect(result.chi).toEqual('123');
     expect(result.toJSON()).toMatchObject({ as: 'Hi world' });
+    result.assign({a: 56})
+    expect(result.a).toEqual(56);
   });
 
   it('should get/set template property', async () => {
@@ -79,6 +81,35 @@ describe('PropertyManager Decorator', () => {
     result.chi = '432'
     expect(result.id).toEqual('try#432-1eu3');
     expect(result.toJSON()).toMatchObject({ as: 'try', chi: '432' });
+  });
+
+  it('should assign object and ignore readonly template property', async () => {
+    const result = new TemplateDemo({id: '___', as: 'Hi world'});
+    expect(result.id).toEqual('Hi world#123-1eu3');
+    expect(JSON.stringify(result)).toBe('{"t1":"Hi world!","items":[],"as":"Hi world"}')
+  })
+
+  it('should export object and ignore template property', () => {
+    @PropertyManager
+    class TemplateDemo1 extends DemoDefault {
+      @Property({
+        template: '${as}#${chi}-${uuid()}',
+        imports: {uuid() { return '1eu3'; }},
+        exported: true,
+      }) id!: string;
+      @Property({
+        template: '${as}!',
+        writable: true,
+      }) t1!: string;
+      @Property({default: '123'}) chi!: string;
+      @Property({type: arrayOf(DemoItem)}) items!: DemoItem[];
+
+      constructor(options?) {
+        super(options);
+      }
+    }
+    const result = new TemplateDemo1({id: '___', as: 'Hi world'});
+    expect(JSON.stringify(result)).toBe('{"id":"Hi world#123-1eu3","t1":"Hi world!","items":[],"as":"Hi world"}')
   });
 
   it('should get array property', async () => {
