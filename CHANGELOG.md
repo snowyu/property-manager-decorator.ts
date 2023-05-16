@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.0-alpha.1](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2023-05-16)
+
+
+### Bug Fixes
+
+* **template-prop:** should ignore readonly template prop when assigning object ([2f450f0](https://github.com/snowyu/property-manager-decorator.ts/commit/2f450f0162ee3cdbe6f4749a529f201bb3bb179f))
+
 ## [2.0.0-alpha.0](https://github.com/snowyu/property-manager-decorator.ts/compare/v0.1.1...v2.0.0-alpha.0) (2023-04-14)
 
 
