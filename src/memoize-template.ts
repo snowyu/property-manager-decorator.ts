@@ -11,7 +11,7 @@ export const memoizeOptions = {
       if (args.length === 2) {
         const opts = args[1];
         result += ['escape', 'evaluate', 'interpolate', 'sourceURL', 'variable'].map(key => opts[key] ? key+'='+opts[key]: '').filter(Boolean).join(',');
-        if (opts.imports) result += 'import=' + Object.keys(opts.imports).sort().join(' ');
+        if (opts.imports) {result += 'import=' + Object.keys(opts.imports).sort().join(' ')}
       }
     }
     return result;

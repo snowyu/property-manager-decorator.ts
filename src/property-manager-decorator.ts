@@ -1,4 +1,5 @@
-import { IAbilityOptions, IPropDescriptor, PropertyAbility } from 'property-manager';
+import type { IAbilityOptions, IPropDescriptor } from 'property-manager';
+import { PropertyAbility } from 'property-manager';
 import { generateTemplateProperty } from './template-property';
 
 type TemplateFunc = (aObj: any) => string;
@@ -17,10 +18,10 @@ const innerPropsName = '__PMProperties__';
  * @return PropertyDecorator | void
  */
 export function Property(options?: PropDescriptor | string | number | boolean ): any {
-  return (target: any, key: string, descriptor: PropertyDescriptor) => {
+  return (target: any, key: string, _descriptor: PropertyDescriptor) => {
     const ctor = target.constructor;
     if (ctor) {
-      if (!ctor[innerPropsName]) ctor[innerPropsName] = {};
+      if (!ctor[innerPropsName]) {ctor[innerPropsName] = {}}
       const vProps = ctor[innerPropsName];
       if (typeof options === 'object' && options.default) {
         options.value = options.default;
@@ -48,7 +49,7 @@ export function PropertyManager(options: Constructor|IAbilityOptions): any {
 function PropertyManagerFactory(ctor: Constructor|any, options?: IAbilityOptions) {
   const vProps = ctor[innerPropsName];
   if (vProps) {
-    if (!ctor.defineProperties) PropertyAbility(ctor, options);
+    if (!ctor.defineProperties) {PropertyAbility(ctor, options)}
     const defineProperties = ctor.defineProperties;
     Object.keys(vProps).forEach(k => {
       const v = vProps[k];

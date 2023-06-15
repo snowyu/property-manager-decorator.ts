@@ -1,4 +1,5 @@
-import { template, TemplateExecutor } from 'lodash';
+import type { TemplateExecutor } from 'lodash';
+import { template } from 'lodash';
 import { memoizeTemplate as mTemplate } from './memoize-template';
 
 /**
@@ -8,11 +9,11 @@ import { memoizeTemplate as mTemplate } from './memoize-template';
  */
 export function generateTemplateValue(this: any, aTemplate: string|TemplateExecutor, aOptions?: any) {
   let result;
-  if (typeof aTemplate === 'string') aTemplate = mTemplate(aTemplate, aOptions);
+  if (typeof aTemplate === 'string') {aTemplate = mTemplate(aTemplate, aOptions)}
   try {
     result = aTemplate(this);
   } catch (error) {
-    if (!(error instanceof ReferenceError)) throw error;
+    if (!(error instanceof ReferenceError)) {throw error}
   }
   return result;
 }
@@ -30,9 +31,9 @@ export function generateTemplateProperty(
     const vTemplateOpts = vImports ? {imports: vImports} : undefined;
     vTemplate = template(vTemplate, vTemplateOpts);
   }
-  if (typeof vTemplate !== 'function') return;
+  if (typeof vTemplate !== 'function') {return}
 
-  if (aOptions.required !== false) aOptions.required = true;
+  if (aOptions.required !== false) {aOptions.required = true}
   if (typeof aOptions.writable !== 'boolean') {aOptions.writable = false}
   const vOpts = {
     ...aOptions,
@@ -43,7 +44,7 @@ export function generateTemplateProperty(
         try {
           result = vTemplate(this);
         } catch (err) {
-          if (!(err instanceof ReferenceError)) throw err;
+          if (!(err instanceof ReferenceError)) {throw err}
         }
       }
       return result;
@@ -52,7 +53,7 @@ export function generateTemplateProperty(
   if (aOptions.writable === true) {
     aMetaType[`$${aFieldName}`] = {type: 'String', enumerable: false};
     vOpts.set = function(value: any) {
-      if (value != null) this[`$${aFieldName}`] = value;
+      if (value != null) {this[`$${aFieldName}`] = value}
     };
   }
   aMetaType[aFieldName] = vOpts;
