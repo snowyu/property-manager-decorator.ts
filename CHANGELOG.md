@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.0-alpha.3](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2023-12-25)
+
+
+### Bug Fixes
+
+* should install with all property-manager 2.0.0 pre-release version ([9bf1643](https://github.com/snowyu/property-manager-decorator.ts/commit/9bf164351182e602bf48fd9850dcc5f854dacbdf))
+
 ## [2.0.0-alpha.2](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2023-06-15)
 
 
