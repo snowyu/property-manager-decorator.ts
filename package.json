@@ -73,6 +73,6 @@
   "peerDependencies": {
     "lodash": ">=2",
     "memoizee": "*",
-    "property-manager": ">=2"
+    "property-manager": "^2.0.0-0"
   }
 }
