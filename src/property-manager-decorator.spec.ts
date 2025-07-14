@@ -72,7 +72,7 @@ describe('PropertyManager Decorator', () => {
     expect(result.t1).toEqual('Hi world!');
     result.t1 = 'myT1';
     expect(result.t1).toEqual('myT1');
-    expect(() => result.id = 'ssss').toThrowError('Cannot set property id');
+    expect(() => result.id = 'ssss').toThrow('Cannot set property id');
     expect(result.a).toEqual(123);
     expect(result.b).toEqual(true);
     expect(result.chi).toEqual('123');
@@ -204,7 +204,7 @@ function testPMAoP(name: PropManagerType) {
       expect(result.t1).toEqual('Hi world!');
       result.t1 = 'myT1';
       expect(result.t1).toEqual('myT1');
-      expect(() => result.id = 'ssss').toThrowError('Cannot set property id');
+      expect(() => result.id = 'ssss').toThrow('Cannot set property id');
       expect(result.a).toEqual(123);
       expect(result.b).toEqual(true);
       expect(result.chi).toEqual('123');
