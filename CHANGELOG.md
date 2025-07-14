@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.0](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.3...v2.0.0) (2025-07-14)
+
 ## [2.0.0-alpha.3](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2023-12-25)
 
 
