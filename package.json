@@ -1,6 +1,6 @@
 {
   "name": "property-manager-decorator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ES201X/TypeScript class decorator for property-manager",
   "main": "dist/property-manager-decorator.common.js",
   "module": "dist/property-manager-decorator.esm.js",
