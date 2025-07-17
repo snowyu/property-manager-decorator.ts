@@ -17,7 +17,6 @@ This library allows you to declaratively add features like serialization, clonin
 * **Typed Arrays**: Supports `arrayOf` for typed arrays.
 * **Template Properties**: Define properties whose values are dynamically generated from a template string.
 
-
 **NOTE: ONLY FOR**  `NormalPropertyManager` and `AdvancePropertyManager`
 
 ## Installation
