@@ -74,6 +74,6 @@
   "peerDependencies": {
     "lodash": ">=2",
     "memoizee": "*",
-    "property-manager": ">=1"
+    "property-manager": "^1"
   }
 }
