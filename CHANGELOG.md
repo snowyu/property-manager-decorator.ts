@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.1](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0...v2.0.1) (2025-07-17)
+
+
+### Bug Fixes
+
+* **build:** peerDependencies property-manager >= 2 ([a49a0b6](https://github.com/snowyu/property-manager-decorator.ts/commit/a49a0b64641835f78c6fd704f4196a04e216bd17))
+
 ## [2.0.0](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.3...v2.0.0) (2025-07-14)
 
 ## [2.0.0-alpha.3](https://github.com/snowyu/property-manager-decorator.ts/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2023-12-25)
